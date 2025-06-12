@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Admin;
 
 class AuthController extends Controller
 {
     public function login(Request $request)
     {
         $request->validate([
-            'username' => 'required|string',
-            'pw' => 'required|string',
+            'name' => 'required|string',
+            'password' => 'required|string',
         ]);
 
         if (Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
