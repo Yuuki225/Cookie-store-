@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LiaCookieBiteSolid } from "react-icons/lia";
 import { FaSpinner } from "react-icons/fa";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -14,8 +15,10 @@ const Login = () => {
     // Simulasi proses login
     setTimeout(() => {
       setLoading(false);
-      alert("Login berhasil! (simulasi)");
-      // Tambahkan redirect ke halaman utama jika perlu
+     
+       setTimeout(() => {
+        navigate("/dashboard"); 
+      }, 200); 
     }, 2000);
   };
 
@@ -32,7 +35,7 @@ const Login = () => {
         <div className="flex flex-col items-center mb-6">
           <LiaCookieBiteSolid className="text-6xl text-brown-500 mb-2" />
           <h1 className="text-3xl font-semibold text-gray-800">Login</h1>
-          <p className="text-sm text-gray-500">Cookie_Store</p>
+          <p className="text-sm text-gray-500">Cookie Store</p>
         </div>
 
         <form className="w-full max-w-sm space-y-4" onSubmit={handleLogin}>
@@ -81,10 +84,7 @@ const Login = () => {
             )}
           </button>``
 
-          <p className="text-sm text-center text-gray-700">
-            Don’t have an account?{" "}
-            <Link to="/register" className="text-blue-600 hover:underline">Register</Link>
-          </p>
+         
         </form>
       </div>
 
